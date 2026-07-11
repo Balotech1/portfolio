@@ -1,36 +1,67 @@
-// ========== Smooth Scrolling for Navigation ==========
-document.querySelectorAll('nav ul li a').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+// ============================
+// SMOOTH SCROLLING FOR NAV LINKS
+// ============================
+const navLinks = document.querySelectorAll('header nav ul li a');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
     e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
-    const target = document.getElementById(targetId);
-    if(target){
+    const targetId = link.getAttribute('href').substring(1);
+    const targetSection = document.getElementById(targetId);
+
+    if (targetSection) {
       window.scrollTo({
-        top: target.offsetTop - 70,
+        top: targetSection.offsetTop - 70, // adjust for sticky header
         behavior: 'smooth'
       });
     }
   });
 });
 
-// ========== Placeholder for Hero / Cards Interactivity ==========
-document.addEventListener('DOMContentLoaded', () => {
-  // Example: hover effect placeholder
-  const cards = document.querySelectorAll('.service-card');
-  cards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      card.style.transform = 'translateY(-5px)';
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'translateY(0)';
-    });
-  });
+// ============================
+// HERO SECTION ANIMATION
+// ============================
+window.addEventListener('load', () => {
+  const heroText = document.querySelector('.hero-text');
+  const heroImage = document.querySelector('.hero-image');
+
+  heroText.style.opacity = 0;
+  heroImage.style.opacity = 0;
+
+  setTimeout(() => {
+    heroText.style.transition = 'opacity 1.5s ease-in-out';
+    heroImage.style.transition = 'opacity 1.5s ease-in-out';
+    heroText.style.opacity = 1;
+    heroImage.style.opacity = 1;
+  }, 300);
 });
 
-// ========== Optional: CTA Button Alert ==========
-const ctaButton = document.querySelector('.cta .btn.primary');
-if(ctaButton){
-  ctaButton.addEventListener('click', () => {
-    alert('This will open the project inquiry form (placeholder).');
-  });
+// ============================
+// OPTIONAL: SCROLL-TO-TOP BUTTON
+// ============================
+const scrollBtn = document.createElement('button');
+scrollBtn.textContent = '↑';
+scrollBtn.id = 'scrollTopBtn';
+scrollBtn.style.cssText = `
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 12px 18px;
+  background-color: #3f78ff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: none;
+  font-size: 1.2rem;
+  z-index: 1000;
+`;
+document.body.appendChild(scrollBtn);
+
+scrollBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+window.addEventListener('scroll', () => {
+  scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
 });
