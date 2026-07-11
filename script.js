@@ -1,43 +1,36 @@
-// ==========================
-// SMOOTH SCROLL FOR NAVIGATION
-// ==========================
-document.querySelectorAll('header nav ul li a').forEach(anchor => {
+// ========== Smooth Scrolling for Navigation ==========
+document.querySelectorAll('nav ul li a').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
-    e.preventDefault(); // Prevent default jump
-    const targetID = this.getAttribute('href').substring(1);
-    const targetSection = document.getElementById(targetID);
-    targetSection.scrollIntoView({ behavior: 'smooth' });
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const target = document.getElementById(targetId);
+    if(target){
+      window.scrollTo({
+        top: target.offsetTop - 70,
+        behavior: 'smooth'
+      });
+    }
   });
 });
 
-// ==========================
-// HERO SLIDESHOW
-// ==========================
-let slideIndex = 0;
-const slides = document.querySelectorAll('.hero-image img');
-
-function showSlides() {
-  slides.forEach((slide, i) => {
-    slide.style.display = i === slideIndex ? 'block' : 'none';
+// ========== Placeholder for Hero / Cards Interactivity ==========
+document.addEventListener('DOMContentLoaded', () => {
+  // Example: hover effect placeholder
+  const cards = document.querySelectorAll('.service-card');
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.style.transform = 'translateY(-5px)';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'translateY(0)';
+    });
   });
-  slideIndex = (slideIndex + 1) % slides.length;
-  setTimeout(showSlides, 5000); // Change every 5 seconds
-}
+});
 
-// Start slideshow if images exist
-if(slides.length > 0) {
-  showSlides();
-}
-
-// ==========================
-// BUTTON HOVER EFFECTS
-// ==========================
-const buttons = document.querySelectorAll('.btn, .btn-header');
-buttons.forEach(btn => {
-  btn.addEventListener('mouseenter', () => {
-    btn.style.opacity = 0.8;
-  });
-  btn.addEventListener('mouseleave', () => {
-    btn.style.opacity = 1;
+// ========== Optional: CTA Button Alert ==========
+const ctaButton = document.querySelector('.cta .btn.primary');
+if(ctaButton){
+  ctaButton.addEventListener('click', () => {
+    alert('This will open the project inquiry form (placeholder).');
   });
 });
