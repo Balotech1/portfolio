@@ -1,85 +1,75 @@
-// ===============================
-// script.js
-// ===============================
+// ==========================================================================
+// BALOTECH — site interactions
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
 
-// Wait for DOM to load
-document.addEventListener('DOMContentLoaded', function() {
+  /* ---------- Sticky header shadow on scroll ---------- */
+  const header = document.getElementById('header');
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 8);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
 
-  // ===============================
-  // Smooth Scroll for nav links
-  // ===============================
-  const navLinks = document.querySelectorAll('header nav ul li a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href').substring(1);
-      const targetSection = document.getElementById(targetId);
-      if(targetSection) {
-        window.scrollTo({
-          top: targetSection.offsetTop - 80, // header offset
-          behavior: 'smooth'
+  /* ---------- Mobile nav toggle ---------- */
+  const navToggle = document.getElementById('nav-toggle');
+  const mainNav = document.getElementById('main-nav');
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = mainNav.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Close mobile nav after tapping a link
+  mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mainNav.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ---------- Active nav link on scroll (scrollspy) ---------- */
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('.main-nav a');
+
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
         });
       }
     });
-  });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
 
-  // ===============================
-  // Sticky Header on scroll
-  // ===============================
-  const header = document.querySelector('header');
-  window.addEventListener('scroll', function() {
-    if(window.scrollY > 50) {
-      header.classList.add('sticky');
-    } else {
-      header.classList.remove('sticky');
-    }
-  });
+  sections.forEach(section => spyObserver.observe(section));
 
-  // ===============================
-  // Scroll Reveal Animation
-  // ===============================
-  const sections = document.querySelectorAll('section');
-  const revealOnScroll = () => {
-    const triggerBottom = window.innerHeight * 0.85;
-    sections.forEach(section => {
-      const sectionTop = section.getBoundingClientRect().top;
-      if(sectionTop < triggerBottom) {
-        section.classList.add('active');
+  /* ---------- Scroll reveal ---------- */
+  const revealTargets = document.querySelectorAll('[data-reveal]');
+  const revealObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
       }
     });
-  };
-  window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll(); // trigger on load
+  }, { threshold: 0.15 });
 
-  // ===============================
-  // Optional: Back to Top Button
-  // ===============================
-  const backToTop = document.createElement('button');
-  backToTop.id = 'back-to-top';
-  backToTop.innerHTML = '↑';
-  document.body.appendChild(backToTop);
-  backToTop.style.cssText = `
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    padding: 10px 15px;
-    font-size: 18px;
-    border: none;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    color: white;
-    cursor: pointer;
-    display: none;
-    z-index: 999;
-  `;
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-  window.addEventListener('scroll', () => {
-    if(window.scrollY > 300) {
-      backToTop.style.display = 'block';
-    } else {
-      backToTop.style.display = 'none';
+  revealTargets.forEach(el => revealObserver.observe(el));
+
+  /* ---------- Newsletter form (front-end only placeholder) ---------- */
+  const form = document.getElementById('newsletter-form');
+  const note = document.getElementById('newsletter-note');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = form.querySelector('input[type="email"]');
+    if (input.value.trim()) {
+      note.textContent = `Thanks — we'll send updates to ${input.value.trim()}.`;
+      form.reset();
     }
   });
 
