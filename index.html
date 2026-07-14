@@ -18,13 +18,16 @@
   <div class="nav-wrap">
     <a href="#" class="brand">
       <span class="brand-mark" aria-hidden="true">
+        <img src="images/logo-icon.png" alt="" width="34" height="34" class="brand-logo-img"
+             onload="this.nextElementSibling.style.display='none';"
+             onerror="this.style.display='none';">
         <svg viewBox="0 0 40 40" width="34" height="34">
           <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="none" stroke="url(#gradB)" stroke-width="2"/>
           <text x="20" y="26" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="17" fill="url(#gradB)">B</text>
           <defs>
             <linearGradient id="gradB" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#5B9DFF"/>
-              <stop offset="1" stop-color="#2E6BFF"/>
+              <stop offset="0" stop-color="#FF9142"/>
+              <stop offset="1" stop-color="#F2701C"/>
             </linearGradient>
           </defs>
         </svg>
@@ -39,6 +42,8 @@
       <a href="#hero" class="active">Home</a>
       <a href="#about">About Us</a>
       <a href="#services">Services</a>
+      <a href="#team">Team</a>
+      <a href="#portfolio">Portfolio</a>
       <a href="#process">Process</a>
       <a href="#why-us">Why Us</a>
       <a href="#contact">Contact</a>
@@ -79,9 +84,45 @@
       </div>
 
       <div class="hero-visual" data-reveal>
-        <div class="pcb-art">
-          <img src="https://images.pexels.com/photos/2182863/pexels-photo-2182863.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1000" alt="Close-up of a circuit board, representing Balotech's engineering work" loading="lazy">
-          <span class="pcb-fade" aria-hidden="true"></span>
+        <div class="pcb-art" aria-hidden="true">
+          <svg viewBox="0 0 480 420" class="pcb-svg">
+            <defs>
+              <radialGradient id="pcbGlow" cx="50%" cy="45%" r="60%">
+                <stop offset="0%" stop-color="#F2701C" stop-opacity="0.55"/>
+                <stop offset="100%" stop-color="#F2701C" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="traceGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#FF9142"/>
+                <stop offset="1" stop-color="#F2701C"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="240" cy="200" rx="230" ry="200" fill="url(#pcbGlow)"/>
+            <g stroke="url(#traceGrad)" stroke-width="1.4" fill="none" opacity="0.85" class="trace-lines">
+              <path d="M40 120 H160 V80 H320"/>
+              <path d="M40 220 H100 V300 H260 V340"/>
+              <path d="M440 100 H360 V180 H420"/>
+              <path d="M440 280 H380 V220 H300"/>
+              <path d="M60 360 H180 V320"/>
+              <path d="M420 340 H300 V300"/>
+            </g>
+            <g class="trace-nodes" fill="#FF9142">
+              <circle cx="40" cy="120" r="4"/><circle cx="320" cy="80" r="4"/>
+              <circle cx="40" cy="220" r="4"/><circle cx="260" cy="340" r="4"/>
+              <circle cx="440" cy="100" r="4"/><circle cx="420" cy="180" r="4"/>
+              <circle cx="440" cy="280" r="4"/><circle cx="300" cy="220" r="4"/>
+              <circle cx="60" cy="360" r="4"/><circle cx="420" cy="340" r="4"/>
+            </g>
+            <rect x="170" y="130" width="140" height="140" rx="10" fill="#0B1220" stroke="url(#traceGrad)" stroke-width="1.5"/>
+            <rect x="192" y="152" width="96" height="96" rx="4" fill="#111A2E" stroke="#F2701C" stroke-width="1"/>
+            <g stroke="#FF9142" stroke-width="1.2">
+              <path d="M210 152 V132 M230 152 V132 M250 152 V132 M270 152 V132"/>
+              <path d="M210 248 V268 M230 248 V268 M250 248 V268 M270 248 V268"/>
+              <path d="M192 172 H172 M192 192 H172 M192 212 H172 M192 232 H172"/>
+              <path d="M288 172 H308 M288 192 H308 M288 212 H308 M288 232 H308"/>
+            </g>
+            <text x="240" y="204" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#FFB679">BALO</text>
+            <text x="240" y="220" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#5B79B0">v2.6</text>
+          </svg>
         </div>
 
         <div class="float-card float-card--analytics">
@@ -150,8 +191,23 @@
           <div><strong>24/7</strong><span>Support coverage</span></div>
         </div>
       </div>
-      <div class="about-visual" data-reveal>
-        <img src="https://images.pexels.com/photos/34804003/pexels-photo-34804003.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" alt="Modern workspace with laptop showing code, reflecting Balotech's engineering-led approach" loading="lazy">
+      <div class="about-visual" data-reveal aria-hidden="true">
+        <svg viewBox="0 0 360 320" class="about-svg">
+          <defs>
+            <linearGradient id="aboutGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#F2701C" stop-opacity="0.25"/>
+              <stop offset="1" stop-color="#F2701C" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <rect x="20" y="20" width="320" height="280" rx="16" fill="url(#aboutGrad)" stroke="#1E2A44"/>
+          <g stroke="#FF9142" stroke-width="1.2" fill="none" opacity="0.8">
+            <circle cx="180" cy="160" r="70"/>
+            <circle cx="180" cy="160" r="46"/>
+            <circle cx="180" cy="160" r="8" fill="#FF9142"/>
+            <path d="M180 90 V50 M180 230 V270 M110 160 H70 M250 160 H290"/>
+          </g>
+          <g fill="#FF9142"><circle cx="180" cy="50" r="4"/><circle cx="180" cy="270" r="4"/><circle cx="70" cy="160" r="4"/><circle cx="290" cy="160" r="4"/></g>
+        </svg>
       </div>
     </div>
   </section>
@@ -167,53 +223,174 @@
 
       <div class="services-grid">
         <article class="service-card" data-reveal>
-          <div class="service-media">
-            <img src="https://images.pexels.com/photos/16129877/pexels-photo-16129877.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" alt="Laptop showing web design work" loading="lazy">
-            <span class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
-          </div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
           <h3>Web Design</h3>
           <p>Modern, responsive websites that represent your brand and convert visitors. Includes e-commerce solutions.</p>
           <a href="#contact" class="card-link">Learn More <span class="arrow">→</span></a>
         </article>
 
         <article class="service-card" data-reveal>
-          <div class="service-media">
-            <img src="https://images.pexels.com/photos/34207359/pexels-photo-34207359.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" alt="Industrial robotic arm representing automation systems" loading="lazy">
-            <span class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v4H4zM4 10h10v4H4zM4 16h13v4H4z"/><circle cx="18" cy="12" r="2"/></svg></span>
-          </div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v4H4zM4 10h10v4H4zM4 16h13v4H4z"/><circle cx="18" cy="12" r="2"/></svg></div>
           <h3>Automation Systems</h3>
           <p>We automate tasks and workflows to save time, reduce manual work and increase productivity.</p>
           <a href="#contact" class="card-link">Learn More <span class="arrow">→</span></a>
         </article>
 
         <article class="service-card" data-reveal>
-          <div class="service-media">
-            <img src="https://images.pexels.com/photos/3912976/pexels-photo-3912976.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" alt="Marketing analytics graph on a laptop screen" loading="lazy">
-            <span class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1116 0 8 8 0 01-16 0z"/><path d="M12 8v4l3 2"/></svg></span>
-          </div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1116 0 8 8 0 01-16 0z"/><path d="M12 8v4l3 2"/></svg></div>
           <h3>Digital Marketing</h3>
           <p>We create strategies that drive traffic, generate leads and grow your brand with proven methods.</p>
           <a href="#contact" class="card-link">Learn More <span class="arrow">→</span></a>
         </article>
 
         <article class="service-card" data-reveal>
-          <div class="service-media">
-            <img src="https://images.pexels.com/photos/6842695/pexels-photo-6842695.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" alt="Close-up of a circuit board for engineering solutions" loading="lazy">
-            <span class="service-icon"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M7 3v4M17 3v4M7 17v4M17 17v4M3 7h4M17 7h4M3 17h4M17 17h4"/></svg></span>
-          </div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M7 3v4M17 3v4M7 17v4M17 17v4M3 7h4M17 7h4M3 17h4M17 17h4"/></svg></div>
           <h3>Engineering Solutions</h3>
           <p>PCB design, IoT systems and embedded solutions for modern needs.</p>
           <a href="#contact" class="card-link">Learn More <span class="arrow">→</span></a>
         </article>
 
         <article class="service-card" data-reveal>
-          <div class="service-media">
-            <img src="https://images.pexels.com/photos/7129624/pexels-photo-7129624.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" alt="Person reading an e-book on a tablet" loading="lazy">
-            <span class="service-icon"><svg viewBox="0 0 24 24"><path d="M6 4h9a3 3 0 013 3v13H8a2 2 0 00-2 2z"/><path d="M6 4v18"/></svg></span>
-          </div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M6 4h9a3 3 0 013 3v13H8a2 2 0 00-2 2z"/><path d="M6 4v18"/></svg></div>
           <h3>E-Book &amp; Course Solutions</h3>
           <p>Ebook publishing, course setup and sales funnel integration.</p>
           <a href="#contact" class="card-link">Learn More <span class="arrow">→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEAM ===== -->
+  <section id="team">
+    <div class="section-inner">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Our Team</span>
+        <h2>The People Behind Balotech</h2>
+        <p>A small team covering the full range of what we build — from engineering to content to client systems.</p>
+      </div>
+
+      <div class="team-grid">
+        <article class="team-card" data-reveal>
+          <div class="team-photo">
+            <img src="images/team/ayoola-bello.jpg" alt="Ayoola M. Bello" loading="lazy"
+                 onerror="this.onerror=null;this.classList.add('broken');this.parentElement.classList.add('no-photo');">
+            <span class="team-initials">AB</span>
+          </div>
+          <h3>Ayoola M. Bello</h3>
+          <span class="team-role">Founder &amp; CEO</span>
+          <p>Computer Engineering graduate. Sets Balotech's technical direction and stays in the weeds on execution, not just strategy.</p>
+        </article>
+
+        <article class="team-card" data-reveal>
+          <div class="team-photo">
+            <img src="images/team/aliyu-o.jpg" alt="Aliyu O." loading="lazy"
+                 onerror="this.onerror=null;this.classList.add('broken');this.parentElement.classList.add('no-photo');">
+            <span class="team-initials">AO</span>
+          </div>
+          <h3>Aliyu O.</h3>
+          <span class="team-role">Digital Marketing Specialist</span>
+          <p>Plans and runs paid and organic campaigns. His Computer Engineering diploma shows up in how he reads campaign data — less gut feeling, more numbers.</p>
+        </article>
+
+        <article class="team-card" data-reveal>
+          <div class="team-photo">
+            <img src="images/team/halima-s.jpg" alt="Halima S." loading="lazy"
+                 onerror="this.onerror=null;this.classList.add('broken');this.parentElement.classList.add('no-photo');">
+            <span class="team-initials">HS</span>
+          </div>
+          <h3>Halima S.</h3>
+          <span class="team-role">E-Book Marketer &amp; Content Developer</span>
+          <p>Mass Communication graduate. Writes and structures e-books and content that's built to convert, not just fill pages.</p>
+        </article>
+
+        <article class="team-card" data-reveal>
+          <div class="team-photo">
+            <img src="images/team/barakat-m.jpg" alt="Barakat M." loading="lazy"
+                 onerror="this.onerror=null;this.classList.add('broken');this.parentElement.classList.add('no-photo');">
+            <span class="team-initials">BM</span>
+          </div>
+          <h3>Barakat M.</h3>
+          <span class="team-role">Web Designer &amp; Online Course Marketer</span>
+          <p>Handles web design and drives enrollment marketing for online courses — two disciplines, one person, Mass Communication background.</p>
+        </article>
+
+        <article class="team-card" data-reveal>
+          <div class="team-photo">
+            <img src="images/team/ibrahim-b.jpg" alt="Ibrahim B." loading="lazy"
+                 onerror="this.onerror=null;this.classList.add('broken');this.parentElement.classList.add('no-photo');">
+            <span class="team-initials">IB</span>
+          </div>
+          <h3>Ibrahim B.</h3>
+          <span class="team-role">CRM &amp; Automation Specialist</span>
+          <p>Keeps client pipelines and automated workflows running cleanly. Zoology graduate by degree, systems person by trade.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PORTFOLIO ===== -->
+  <section id="portfolio">
+    <div class="section-inner">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Sample Work</span>
+        <h2>What We've Built</h2>
+        <p>A look at concept and sample projects across each of our service lines.</p>
+      </div>
+
+      <div class="portfolio-grid">
+        <article class="portfolio-card" data-reveal>
+          <div class="portfolio-media">
+            <img src="images/portfolio/whatsapp-automation.jpg" alt="WhatsApp AI Automation System" loading="lazy"
+                 onerror="this.onerror=null;this.classList.add('broken');this.parentElement.classList.add('no-photo');">
+            <span class="portfolio-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v4H4zM4 10h10v4H4zM4 16h13v4H4z"/><circle cx="18" cy="12" r="2"/></svg></span>
+          </div>
+          <span class="portfolio-tag">Automation Systems</span>
+          <h3>WhatsApp AI Automation System</h3>
+          <p>An AI-powered WhatsApp workflow built in n8n that handles customer FAQs, menu navigation and conversation history automatically.</p>
+        </article>
+
+        <article class="portfolio-card" data-reveal>
+          <div class="portfolio-media">
+            <img src="images/portfolio/magnetic-af.jpg" alt="Magnetic AF bilingual coaching website" loading="lazy"
+                 onerror="this.onerror=null;this.classList.add('broken');this.parentElement.classList.add('no-photo');">
+            <span class="portfolio-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
+          </div>
+          <span class="portfolio-tag">Web Design</span>
+          <h3>Magnetic AF — Bilingual Coaching Website</h3>
+          <p>A bilingual English/Spanish course sales site for a feminine-energy coaching brand, with embedded video and a full sales narrative.</p>
+        </article>
+
+        <article class="portfolio-card" data-reveal>
+          <div class="portfolio-media">
+            <img src="images/portfolio/3c-pro-system.jpg" alt="3C Pro System fitness coaching landing page" loading="lazy"
+                 onerror="this.onerror=null;this.classList.add('broken');this.parentElement.classList.add('no-photo');">
+            <span class="portfolio-icon"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1116 0 8 8 0 01-16 0z"/><path d="M12 8v4l3 2"/></svg></span>
+          </div>
+          <span class="portfolio-tag">Digital Marketing</span>
+          <h3>3C Pro System — Fitness Coaching Landing Page</h3>
+          <p>A conversion-focused bilingual landing page for a premium 1-on-1 fitness coaching program, built to drive private consultation applications.</p>
+        </article>
+
+        <article class="portfolio-card" data-reveal>
+          <div class="portfolio-media">
+            <img src="images/portfolio/ebook-seo.jpg" alt="E-Book SEO and metadata optimization" loading="lazy"
+                 onerror="this.onerror=null;this.classList.add('broken');this.parentElement.classList.add('no-photo');">
+            <span class="portfolio-icon"><svg viewBox="0 0 24 24"><path d="M6 4h9a3 3 0 013 3v13H8a2 2 0 00-2 2z"/><path d="M6 4v18"/></svg></span>
+          </div>
+          <span class="portfolio-tag">E-Book &amp; Course Solutions</span>
+          <h3>E-Book SEO &amp; Metadata Optimization</h3>
+          <p>AEO/SEO metadata optimization for an e-book — improved title clarity, backend depth and AI query match by up to 90%.</p>
+        </article>
+
+        <article class="portfolio-card" data-reveal>
+          <div class="portfolio-media">
+            <img src="images/portfolio/engineering-solutions.jpg" alt="Engineering solutions sample project" loading="lazy"
+                 onerror="this.onerror=null;this.classList.add('broken');this.parentElement.classList.add('no-photo');">
+            <span class="portfolio-icon"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M7 3v4M17 3v4M7 17v4M17 17v4M3 7h4M17 7h4M3 17h4M17 17h4"/></svg></span>
+          </div>
+          <span class="portfolio-tag">Engineering Solutions</span>
+          <h3>Facial-Recognition Access Gate</h3>
+          <p>A facial-recognition sliding gate system built around custom circuit design — sample placeholder pending final project photo.</p>
         </article>
       </div>
     </div>
@@ -306,7 +483,7 @@
         <h2>Ready to Build Something Amazing?</h2>
         <p>Let's turn your ideas into powerful digital solutions.</p>
         <div class="hero-actions">
-          <a href="mailto:btechdynamics@gmail.com" class="btn btn-primary">Start Your Project Today <span class="arrow">→</span></a>
+          <a href="mailto:hello@balotech.com" class="btn btn-primary">Start Your Project Today <span class="arrow">→</span></a>
           <a href="https://wa.me/2349013544162" class="btn btn-outline" target="_blank" rel="noopener">Chat on WhatsApp</a>
         </div>
       </div>
@@ -331,9 +508,12 @@
     <div class="footer-brand">
       <a href="#" class="brand">
         <span class="brand-mark" aria-hidden="true">
+          <img src="images/logo-icon.png" alt="" width="30" height="30" class="brand-logo-img"
+               onload="this.nextElementSibling.style.display='none';"
+               onerror="this.style.display='none';">
           <svg viewBox="0 0 40 40" width="30" height="30">
-            <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="none" stroke="#5B9DFF" stroke-width="2"/>
-            <text x="20" y="26" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="17" fill="#5B9DFF">B</text>
+            <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="none" stroke="#FF9142" stroke-width="2"/>
+            <text x="20" y="26" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="17" fill="#FF9142">B</text>
           </svg>
         </span>
         <span class="brand-text"><strong>BALOTECH</strong></span>
@@ -352,7 +532,8 @@
       <a href="#hero">Home</a>
       <a href="#about">About Us</a>
       <a href="#services">Services</a>
-      <a href="#process">Process</a>
+      <a href="#team">Team</a>
+      <a href="#portfolio">Portfolio</a>
       <a href="#contact">Contact</a>
     </div>
 
@@ -367,7 +548,7 @@
 
     <div class="footer-col">
       <h4>Contact Us</h4>
-      <a href="mailto:btechdynamics@gmail.com">btechdynamics@gmail.com</a>
+      <a href="mailto:hello@balotech.com">hello@balotech.com</a>
       <a href="tel:+2349013544162">+234 901 354 4162</a>
       <span class="footer-address">Osogbo, Osun State, Nigeria</span>
     </div>
